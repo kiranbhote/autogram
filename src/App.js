@@ -7,7 +7,7 @@ function App() {
     <div>
       <Header />
       <div className="p-4">
-        <h2>Welcome to Autogramapp!</h2>
+        <h2>Welcome to Autogram!</h2>
         {/* Add other components here */}
       </div>
     </div>
