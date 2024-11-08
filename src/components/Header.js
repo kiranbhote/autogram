@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { ReactComponent as Logo } from '../assets/Autogram-Logo.svg'; // Import your SVG logo here
 import profileImage from '../assets/profile.jpg'; // Replace with your profile image path
+import { ChevronDownIcon } from '@heroicons/react/24/solid'; // Import the Chevron Down icon from Heroicons v2
+
 
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -14,7 +16,7 @@ function Header() {
     <header className="bg-white shadow-md p-4 flex items-center justify-between">
       {/* Logo */}
       <div className="flex items-center">
-        <Logo className="h-10 mr-2" alt="Autogramapp Logo" />
+        <Logo className="h-8 sm:h-10" alt="Autogramapp Logo" /> {/* Adjust logo size for small screens */}
       </div>
 
       {/* Profile with Dropdown */}
@@ -26,9 +28,11 @@ function Header() {
           <img
             src={profileImage}
             alt="Profile"
-            className="h-8 w-8 rounded-full border border-gray-300"
-                  />
-                  <span className="text-gray-700 m-4 font-medium">Major Tom</span>
+            className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border border-gray-300"
+          />
+          {/* Hide profile name on small screens */}
+                  <span className="hidden sm:inline-block text-gray-700 ml-2 font-medium">Major Tom</span>
+                  <ChevronDownIcon className="w-4 h-4 mx-2 text-gray-700" />
         </button>
 
         {/* Dropdown Menu */}
