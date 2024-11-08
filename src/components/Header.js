@@ -1,10 +1,11 @@
-// src/components/Header.js
 import React, { useState, useRef, useEffect } from 'react';
-import { ReactComponent as Logo } from '../assets/Autogram-Logo.svg'; // Import your SVG logo here
-import profileImage from '../assets/profile.jpg'; // Replace with your profile image path
+import { ReactComponent as Logo } from '../assets/Autogram-Logo.svg';
+import profileImage from '../assets/profile.jpg';
+import ConfirmationModal from './ConfirmationModal';
 
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [logoutPopupOpen, setLogoutPopupOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
@@ -15,6 +16,15 @@ function Header() {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setDropdownOpen(false);
     }
+  };
+
+  const openLogoutPopup = () => {
+    setLogoutPopupOpen(true);
+    setDropdownOpen(false); // Close the dropdown when opening the logout popup
+  };
+
+  const closeLogoutPopup = () => {
+    setLogoutPopupOpen(false);
   };
 
   useEffect(() => {
@@ -30,57 +40,77 @@ function Header() {
   }, [dropdownOpen]);
 
   return (
-    <header className="bg-white shadow-md p-4 flex items-center justify-between sm:px-40">
+      <header
+       className="bg-white shadow-md p-4 flex items-center justify-between"
+      style={{
+        paddingLeft: "max((100vw - 1000px) / 2, 20px)",
+        paddingRight: "max((100vw - 1000px) / 2, 20px)",
+      }}
+      >
       {/* Logo */}
       <div className="flex items-center">
         <Logo className="h-10 sm:h-10" alt="Autogramapp Logo" />
+      </div>
+
+      <div className="flex">
+        {/* Upgrade to Pro Button (Visible only on larger screens) */}
+        <button className="mr-4 hidden sm:inline-block bg-blue-600 text-white px-4 py-2 rounded-md font-medium ml-4 hover:bg-blue-700">
+          Upgrade to Pro
+        </button>
+
+        {/* Profile Section with Dropdown */}
+        <div className="relative" ref={dropdownRef}>
+          <button onClick={toggleDropdown} className="flex items-center focus:outline-none">
+            <img
+              src={profileImage}
+              alt="Profile"
+              className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border border-gray-300"
+            />
+            <span className="hidden sm:inline-block text-gray-700 ml-2 font-medium">Major Tom</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ml-2 text-gray-700">
+              <path
+                fillRule="evenodd"
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+
+          {/* Dropdown Menu with Animation */}
+          <div
+            className={`absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-md shadow-lg
+                   transform transition-all duration-200 ease-out
+                   ${dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+          >
+            <ul>
+              <li className="block sm:hidden px-2 py-2">
+                <button className="w-full bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700">
+                  Upgrade to Pro
+                </button>
+              </li>
+              <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">My Account</li>
+              <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                Help <span className="text-sm text-gray-500">support@autogram.com</span>
+              </li>
+              <li
+                className="px-4 py-3 hover:bg-gray-100 cursor-pointer"
+                onClick={openLogoutPopup}
+              >
+                Logout
+              </li>
+            </ul>
           </div>
-          
-<div className='flex'>
-      {/* Upgrade to Pro Button (Visible only on larger screens) */}
-      <button className="mr-4 hidden sm:inline-block bg-blue-600 text-white px-4 py-2 rounded-md font-medium ml-4 hover:bg-blue-700">
-        Upgrade to Pro
-      </button>
-
-      {/* Profile Section with Dropdown */}
-      <div className="relative" ref={dropdownRef}>
-        <button
-          onClick={toggleDropdown}
-          className="flex items-center focus:outline-none"
-        >
-          <img
-            src={profileImage}
-            alt="Profile"
-            className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border border-gray-300"
-          />
-          <span className="hidden sm:inline-block text-gray-700 ml-2 font-medium">Major Tom</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ml-2 text-gray-700">
-            <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
-          </svg>
-                  </button>
-                  </div>
-
-        {/* Dropdown Menu with Animation */}
-        <div
-          className={`absolute sm:right-36 right-2 mt-12 w-52 bg-white border border-gray-200 rounded-md shadow-lg
-                      transform transition-all duration-200 ease-out
-                      ${dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
-        >
-          <ul>
-            {/* Upgrade to Pro Button for Mobile */}
-            <li className="block sm:hidden px-2 py-2">
-              <button className="w-full bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700">
-                Upgrade to Pro
-              </button>
-            </li>
-            <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">My Account</li>
-            <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-              Help <span className="text-sm text-gray-500">support@autogram.com</span>
-            </li>
-            <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">Logout</li>
-          </ul>
         </div>
       </div>
+
+      {/* Logout Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={logoutPopupOpen}
+        onClose={closeLogoutPopup}
+        onConfirm={closeLogoutPopup} // Replace with actual logout function if needed
+        title="Confirm Logout"
+        message="Are you sure you want to logout?"
+      />
     </header>
   );
 }
