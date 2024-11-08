@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import PostSelection from './PostSelection';
 import TriggerKeywords from './TriggerKeywords';
 import PlanSelectionModal from './PlanSelectionModal';
+import MessageInput from './MessageInput';
+
 
 const MainSection = () => {
   // State to control the visibility of the Pro modal
@@ -28,7 +30,7 @@ const MainSection = () => {
     >
       {/* Pass showProModal to TriggerKeywords */}
       <TriggerKeywords showProModal={showProModal} />
-
+    <MessageInput />
       {/* Render the PlanSelectionModal */}
       {isProModalOpen && (
         <PlanSelectionModal isOpen={isProModalOpen} onClose={closeProModal} />
