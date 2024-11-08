@@ -20,7 +20,7 @@ function Header() {
 
   const openLogoutPopup = () => {
     setLogoutPopupOpen(true);
-    setDropdownOpen(false); // Close the dropdown when opening the logout popup
+    setDropdownOpen(false);
   };
 
   const closeLogoutPopup = () => {
@@ -40,34 +40,34 @@ function Header() {
   }, [dropdownOpen]);
 
   return (
-      <header
-       className="bg-white shadow-md p-4 flex items-center justify-between"
+    <header
+          className="bg-gray-50 shadow-sm p-4 flex items-center justify-between"
       style={{
         paddingLeft: "max((100vw - 1000px) / 2, 20px)",
         paddingRight: "max((100vw - 1000px) / 2, 20px)",
       }}
-      >
+    >
       {/* Logo */}
       <div className="flex items-center">
         <Logo className="h-10 sm:h-10" alt="Autogramapp Logo" />
       </div>
 
-      <div className="flex">
-        {/* Upgrade to Pro Button (Visible only on larger screens) */}
-        <button className="mr-4 hidden sm:inline-block bg-blue-600 text-white px-4 py-2 rounded-md font-medium ml-4 hover:bg-blue-700">
+      <div className="flex items-center">
+        {/* Upgrade to Pro Button */}
+        <button className="hidden sm:inline-block bg-blue-500 text-white px-4 py-2 rounded-lg font-medium ml-4 hover:bg-blue-600">
           Upgrade to Pro
         </button>
 
         {/* Profile Section with Dropdown */}
         <div className="relative" ref={dropdownRef}>
-          <button onClick={toggleDropdown} className="flex items-center focus:outline-none">
+          <button onClick={toggleDropdown} className="flex items-center focus:outline-none ml-4">
             <img
               src={profileImage}
               alt="Profile"
               className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border border-gray-300"
             />
             <span className="hidden sm:inline-block text-gray-700 ml-2 font-medium">Major Tom</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ml-2 text-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ml-2 text-gray-500">
               <path
                 fillRule="evenodd"
                 d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
@@ -76,24 +76,24 @@ function Header() {
             </svg>
           </button>
 
-          {/* Dropdown Menu with Animation */}
+          {/* Dropdown Menu with Notion-like styling */}
           <div
-            className={`absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-md shadow-lg
-                   transform transition-all duration-200 ease-out
-                   ${dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+            className={`absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md
+                        transform transition-all duration-200 ease-out
+                        ${dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
           >
-            <ul>
+            <ul className="text-gray-700 text-sm">
               <li className="block sm:hidden px-2 py-2">
-                <button className="w-full bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700">
+                <button className="w-full bg-blue-500 text-white py-2 rounded-lg font-medium hover:bg-blue-600">
                   Upgrade to Pro
                 </button>
               </li>
               <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">My Account</li>
               <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                Help <span className="text-sm text-gray-500">support@autogram.com</span>
+                Help <span className="text-gray-500">support@autogram.com</span>
               </li>
               <li
-                className="px-4 py-3 hover:bg-gray-100 cursor-pointer"
+                className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-red-500"
                 onClick={openLogoutPopup}
               >
                 Logout
@@ -103,11 +103,11 @@ function Header() {
         </div>
       </div>
 
-      {/* Logout Confirmation Modal */}
+      {/* Logout Confirmation Modal with Notion-like styling */}
       <ConfirmationModal
         isOpen={logoutPopupOpen}
         onClose={closeLogoutPopup}
-        onConfirm={closeLogoutPopup} // Replace with actual logout function if needed
+        onConfirm={closeLogoutPopup}
         title="Confirm Logout"
         message="Are you sure you want to logout?"
       />
