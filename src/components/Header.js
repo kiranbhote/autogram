@@ -30,7 +30,7 @@ function Header() {
   }, [dropdownOpen]);
 
   return (
-    <header className="bg-white shadow-md p-4 flex items-center justify-between">
+    <header className="bg-white shadow-md p-4 flex items-center justify-between sm:px-40">
       {/* Logo */}
       <div className="flex items-center">
         <Logo className="h-10 sm:h-10" alt="Autogramapp Logo" />
@@ -62,7 +62,7 @@ function Header() {
 
         {/* Dropdown Menu with Animation */}
         <div
-          className={`absolute right-2 mt-12 w-52 bg-white border border-gray-200 rounded-md shadow-lg
+          className={`absolute sm:right-36 right-2 mt-12 w-52 bg-white border border-gray-200 rounded-md shadow-lg
                       transform transition-all duration-200 ease-out
                       ${dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
         >
