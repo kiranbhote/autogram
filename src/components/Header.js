@@ -33,7 +33,7 @@ function Header() {
     <header className="bg-white shadow-md p-4 flex items-center justify-between">
       {/* Logo */}
       <div className="flex items-center">
-        <Logo className="h-8 sm:h-10" alt="Autogramapp Logo" />
+        <Logo className="h-10 sm:h-10" alt="Autogramapp Logo" />
           </div>
           
 <div className='flex'>
