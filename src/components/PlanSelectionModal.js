@@ -1,5 +1,5 @@
 // src/components/PlanSelectionModal.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckIcon } from '@heroicons/react/20/solid';
 
 const plans = [
@@ -36,21 +36,30 @@ const plans = [
 ];
 
 function PlanSelectionModal({ isOpen, onClose }) {
+  // Lock scrolling on the body when the modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center shadow-smjustify-center backdrop-blur-sm bg-white bg-opacity-50 z-50 sm:px-0 overflow-y-auto">
-      <div className="relative bg-white p-6 rounded-lg border-2 border-gray-100 shadow-lg w-full max-w-3xl mx-auto max-h-screen sm:max-h-[90vh] overflow-y-auto">
-        {/* Header */}
+    <div className="no-margin-top fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-50 backdrop-blur-sm">
+      <div className="relative bg-white p-6 rounded-lg border-2 border-gray-100 shadow-lg w-full max-w-3xl mx-4 sm:mx-auto max-h-[90vh] overflow-y-auto">
+        {/* Modal Header */}
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-2xl font-semibold text-gray-800">Upgrade to Autogram Pro</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-500">
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-500 text-lg">
             ✕
           </button>
         </div>
         
-        {/* Subtitle */}
-        <p className="flex text-gray-600 mb-6 text-center">
+        {/* Modal Subtitle */}
+        <p className="text-gray-600 mb-6 text-center">
           Select a plan that suits you best. Enjoy unlimited usage and extra features.
         </p>
 
@@ -82,6 +91,7 @@ function PlanSelectionModal({ isOpen, onClose }) {
               {/* Action Button */}
               <button
                 className={`mt-6 w-full py-2.5 rounded-md font-semibold ${plan.featured ? 'bg-[#FF543E] text-[#ffffff] hover:bg-[#FF543E]/90' : 'bg-[#FF543E] text-white hover:bg-[#FF543E]/90'}`}
+                onClick={onClose}
               >
                 Get started today
               </button>

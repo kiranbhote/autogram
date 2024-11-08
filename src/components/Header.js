@@ -51,7 +51,7 @@ function Header() {
 
   return (
     <header
-      className="bg-gray-50 shadow-sm p-4 flex items-center justify-between"
+      className="sticky top-0 z-55 bg-white shadow-sm p-4 flex items-center justify-between"
       style={{
         paddingLeft: "max((100vw - 1000px) / 2, 20px)",
         paddingRight: "max((100vw - 1000px) / 2, 20px)",

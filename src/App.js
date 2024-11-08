@@ -1,15 +1,14 @@
 // src/App.js
 import React from 'react';
 import Header from './components/Header';
+import PostAutomation from './components/PostAutomation';
 
 function App() {
   return (
     <div>
       <Header />
-      <div className="p-4">
-        <h2>Welcome to Autogram!</h2>
-        {/* Add other components here */}
-      </div>
+      <PostAutomation/>
+      
     </div>
   );
 }
