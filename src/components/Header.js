@@ -2,10 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ReactComponent as Logo } from '../assets/Autogram-Logo.svg';
 import profileImage from '../assets/profile.jpg';
 import ConfirmationModal from './ConfirmationModal';
+import PlanSelectionModal from './PlanSelectionModal';
 
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [logoutPopupOpen, setLogoutPopupOpen] = useState(false);
+  const [planModalOpen, setPlanModalOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
@@ -27,6 +29,14 @@ function Header() {
     setLogoutPopupOpen(false);
   };
 
+  const openPlanModal = () => {
+    setPlanModalOpen(true);
+  };
+
+  const closePlanModal = () => {
+    setPlanModalOpen(false);
+  };
+
   useEffect(() => {
     if (dropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -41,7 +51,7 @@ function Header() {
 
   return (
     <header
-          className="bg-gray-50 shadow-sm p-4 flex items-center justify-between"
+      className="bg-gray-50 shadow-sm p-4 flex items-center justify-between"
       style={{
         paddingLeft: "max((100vw - 1000px) / 2, 20px)",
         paddingRight: "max((100vw - 1000px) / 2, 20px)",
@@ -53,9 +63,12 @@ function Header() {
       </div>
 
       <div className="flex items-center">
-        {/* Upgrade to Pro Button */}
-        <button className="hidden sm:inline-block bg-blue-500 text-white px-4 py-2 rounded-lg font-medium ml-4 hover:bg-blue-600">
-          Upgrade to Pro
+        {/* Become a Pro Button */}
+        <button
+          onClick={openPlanModal}
+          className="hidden sm:inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-medium ml-4 hover:bg-blue-700"
+        >
+          Become a Pro
         </button>
 
         {/* Profile Section with Dropdown */}
@@ -76,7 +89,7 @@ function Header() {
             </svg>
           </button>
 
-          {/* Dropdown Menu with Notion-like styling */}
+          {/* Dropdown Menu */}
           <div
             className={`absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md
                         transform transition-all duration-200 ease-out
@@ -84,18 +97,15 @@ function Header() {
           >
             <ul className="text-gray-700 text-sm">
               <li className="block sm:hidden px-2 py-2">
-                <button className="w-full bg-blue-500 text-white py-2 rounded-lg font-medium hover:bg-blue-600">
-                  Upgrade to Pro
+                <button onClick={openPlanModal} className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700">
+                  Become a Pro
                 </button>
               </li>
               <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">My Account</li>
               <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
                 Help <span className="text-gray-500">support@autogram.com</span>
               </li>
-              <li
-                className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-red-500"
-                onClick={openLogoutPopup}
-              >
+              <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-red-500" onClick={openLogoutPopup}>
                 Logout
               </li>
             </ul>
@@ -103,7 +113,7 @@ function Header() {
         </div>
       </div>
 
-      {/* Logout Confirmation Modal with Notion-like styling */}
+      {/* Modals */}
       <ConfirmationModal
         isOpen={logoutPopupOpen}
         onClose={closeLogoutPopup}
@@ -111,6 +121,7 @@ function Header() {
         title="Confirm Logout"
         message="Are you sure you want to logout?"
       />
+      <PlanSelectionModal isOpen={planModalOpen} onClose={closePlanModal} />
     </header>
   );
 }
