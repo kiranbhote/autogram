@@ -1,9 +1,11 @@
 // src/components/MainSection.js
 import React, { useState } from 'react';
+
+import PlanSelectionModal from './PlanSelectionModal';
 import PostSelection from './PostSelection';
 import TriggerKeywords from './TriggerKeywords';
-import PlanSelectionModal from './PlanSelectionModal';
 import MessageInput from './MessageInput';
+import AutoReply from './AutoReply';
 
 
 const MainSection = () => {
@@ -30,7 +32,8 @@ const MainSection = () => {
     >
       {/* Pass showProModal to TriggerKeywords */}
       <TriggerKeywords showProModal={showProModal} />
-    <MessageInput />
+          <MessageInput />
+        <AutoReply showProModal={showProModal} />
       {/* Render the PlanSelectionModal */}
       {isProModalOpen && (
         <PlanSelectionModal isOpen={isProModalOpen} onClose={closeProModal} />

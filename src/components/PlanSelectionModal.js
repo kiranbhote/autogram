@@ -36,16 +36,22 @@ const plans = [
 ];
 
 function PlanSelectionModal({ isOpen, onClose }) {
-  // Lock scrolling on the body when the modal is open
+  // Lock scrolling on the body only when the modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
+
+    // Clean up the overflow style on component unmount
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
+
 
   return (
     <div className="no-margin-top fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-50 backdrop-blur-sm">

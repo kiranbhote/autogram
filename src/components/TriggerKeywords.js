@@ -31,13 +31,6 @@ const TriggerKeywords = ({ showProModal }) => {
         <span className="text-sm text-gray-500">{keywords.length} keywords</span>
       </div>
 
-      {/* Limit Message */}
-      {keywords.length >= 10 && (
-        <p className="text-sm text-orange-600 mt-0 mb-4 duration-800 ease-in-out">
-          You can only enter up to 10 keywords in the free plan. Upgrade to Pro for more.
-        </p>
-      )}
-
       {/* Keyword Tags */}
       <div className="flex flex-wrap gap-2 mb-4">
         {keywords.map((keyword, index) => (
@@ -78,6 +71,12 @@ const TriggerKeywords = ({ showProModal }) => {
           Add
         </button>
       </form>
+      {/* Display Limit Message */}
+      {keywords.length >= 10 && (
+        <p className="text-xs text-orange-600 mt-2">
+          You can only enter up to 10 trigger keywords in the free plan. Upgrade to Pro for more.
+        </p>
+      )}
     </section>
   );
 };
