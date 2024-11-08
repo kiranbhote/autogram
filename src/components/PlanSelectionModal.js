@@ -9,11 +9,11 @@ const plans = [
     priceMonthly: '₹599',
     description: "Ideal for those getting started.",
     features: [
-      '3 months access',
-      'Unlimited automations',
-      'Story automations',
-      'Autogram branding',
-      'GST Included',
+      '3 Months Access',
+      'Unlimited Post Automations',
+      'Story Automations',
+      'Upto 25 Tigger Keywords',
+      'Autogram Branding',
     ],
     featured: false,
   },
@@ -23,13 +23,13 @@ const plans = [
     priceMonthly: '₹499',
     description: "Unlock all features and priority support.",
     features: [
-      '12 months access',
-      'Unlimited automations',
-      'Story automations',
-      'AI auto-reply feature',
-      'Priority 24×7 support',
-      'Remove branding',
-      'GST Included',
+      '12 Months Access',
+      'Unlimited Post Automations',
+      'Story Automations',
+      'Upto 50 Tigger Keywords',
+      'AI Auto-reply Feature',
+      'Priority 24×7 Support',
+      'Remove Branding',
     ],
     featured: true,
   },
@@ -49,7 +49,7 @@ function PlanSelectionModal({ isOpen, onClose }) {
 
   return (
     <div className="no-margin-top fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-50 backdrop-blur-sm">
-      <div className="relative bg-white p-6 rounded-lg border-2 border-gray-100 shadow-lg w-full max-w-3xl mx-4 sm:mx-auto max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-white py-12 p-6 sm:p-6 sm:rounded-lg sm:border-2 sm:border-gray-100 sm:shadow-lg w-full max-w-3xl sm:mx-4 max-h-[100vh] overflow-y-auto">
         {/* Modal Header */}
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-2xl font-semibold text-gray-800">Upgrade to Autogram Pro</h2>
@@ -59,7 +59,7 @@ function PlanSelectionModal({ isOpen, onClose }) {
         </div>
         
         {/* Modal Subtitle */}
-        <p className="text-gray-600 mb-6 text-center">
+        <p className="flex text-gray-600 mb-6 text-center">
           Select a plan that suits you best. Enjoy unlimited usage and extra features.
         </p>
 
