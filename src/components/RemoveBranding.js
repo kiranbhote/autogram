@@ -18,7 +18,7 @@ const RemoveBranding = ({ showProModal }) => {
   };
 
   return (
-    <section className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm transition-all duration-300 ease-in-out flex items-center justify-between">
+    <section className="bg-white rounded-lg p-5 shadow-sm transition-all duration-300 ease-in-out flex items-center justify-between">
       {/* Title and Badge */}
       <div className="flex items-center space-x-2">
         <h3 className="text-lg font-medium text-gray-900">Remove Branding</h3>

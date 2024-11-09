@@ -21,7 +21,7 @@ const AutoReply = ({ showProModal }) => {
   };
 
   return (
-    <section className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm transition-all duration-300 ease-in-out">
+    <section className="bg-white rounded-lg p-5 shadow-sm transition-all duration-300 ease-in-out">
       {/* Title and Toggle */}
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-medium text-gray-900">Auto Reply</h3>
@@ -64,7 +64,9 @@ const AutoReply = ({ showProModal }) => {
                   className="ml-2 text-gray-500 hover:text-gray-700 transform hover:scale-110 transition-transform duration-150 ease-in-out"
                   aria-label="Remove reply"
                 >
-                  ✕
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="size-4">
+                <path d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
+              </svg>
                 </button>
               </div>
             ))}
@@ -77,7 +79,7 @@ const AutoReply = ({ showProModal }) => {
               placeholder="Add auto reply"
               value={newReply}
               onChange={(e) => setNewReply(e.target.value)}
-              className="w-full bg-transparent border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 transition-shadow duration-200 ease-in-out"
+              className="w-full bg-transparent border border-gray-2 00 rounded-md px-3 py-2 text-sm placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 transition-shadow duration-200 ease-in-out"
             />
             <button
               type="submit"

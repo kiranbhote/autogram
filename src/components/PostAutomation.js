@@ -31,7 +31,7 @@ const MainSection = () => {
 
   return (
     <div
-      className="pt-12 p-4 bg-gray-50 space-y-6"
+      className="pt-12 p-4 bg-stone-100 space-y-6"
       style={{
         paddingLeft: "max((100vw - 1000px) / 2, 20px)",
         paddingRight: "max((100vw - 1000px) / 2, 20px)",

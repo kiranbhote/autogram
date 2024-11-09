@@ -3,7 +3,7 @@ import React from 'react';
 
 const MessageInput = () => {
   return (
-    <section className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm transition-all duration-300 ease-in-out">
+    <section className="bg-white rounded-lg p-5 shadow-sm transition-all duration-300 ease-in-out">
       {/* Message Title */}
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-medium text-gray-900">Message</h3>
