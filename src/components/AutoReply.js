@@ -61,12 +61,10 @@ const AutoReply = ({ showProModal }) => {
                 <span className="truncate">{reply}</span>
                 <button
                   onClick={() => removeReply(reply)}
-                  className="ml-2 text-gray-500 hover:text-gray-700"
+                  className="ml-2 text-gray-500 hover:text-gray-700 transform hover:scale-110 transition-transform duration-150 ease-in-out"
                   aria-label="Remove reply"
                 >
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="size-4">
-                <path d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
-              </svg>
+                  ✕
                 </button>
               </div>
             ))}
@@ -83,7 +81,7 @@ const AutoReply = ({ showProModal }) => {
             />
             <button
               type="submit"
-              className={`text-sm font-medium ${
+              className={`text-sm font-medium transform transition-transform duration-150 hover:scale-105 ${
                 newReply ? 'text-orange-600' : 'text-gray-500 hover:text-gray-700'
               }`}
             >
